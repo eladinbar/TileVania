@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,14 +10,19 @@ public class PlayerMechanics : MonoBehaviour {
     private static readonly int FireBow = Animator.StringToHash("FireBow");
     private static readonly int Death = Animator.StringToHash("Death");
     
+    [Header("Movement Speed")]
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] float swimSpeed = 5f;
     [SerializeField] float waterGravity = 1f;
     [SerializeField] Vector2 deathKick = new Vector2(0f, 10f);
+    
+    [Header("Projectile")]
     [SerializeField] GameObject projectile;
     [SerializeField] Transform bowTransform;
+    
+    [Header("SFX")]
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] AudioClip deathSFX;
     [SerializeField] AudioClip bowShotSFX;
