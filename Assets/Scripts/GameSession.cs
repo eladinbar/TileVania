@@ -32,11 +32,15 @@ public class GameSession : MonoBehaviour {
             StartCoroutine(ResetGameSession());
     }
 
-    private IEnumerator ResetGameSession() {
-        yield return new WaitForSecondsRealtime(levelLoadDelay);
+    public void ReturnToMainMenu() {
         FindObjectOfType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator ResetGameSession() {
+        yield return new WaitForSecondsRealtime(levelLoadDelay);
+        ReturnToMainMenu();
     }
 
     private IEnumerator TakeLife() {
