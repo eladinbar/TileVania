@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
     public static bool gameIsPaused;
 
     [SerializeField] GameObject pauseMenuUI;
 
-    void Update()
-    {
+    void Update() {
         if(Input.GetKeyDown(KeyCode.Escape))
             if (gameIsPaused)
                 Resume();
@@ -17,12 +15,14 @@ public class PauseMenu : MonoBehaviour {
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
+        Cursor.visible = false;
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
 
     void Pause() {
         pauseMenuUI.SetActive(true);
+        Cursor.visible = true;
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
