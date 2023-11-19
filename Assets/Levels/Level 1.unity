@@ -48166,8 +48166,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can jump off of a ladder while stationary to get to harder to reach
-    platforms
+  m_text: You can jump off of ladders to get to harder to reach platforms
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a2ac1a9c63f4e5a489193fb90df779d2, type: 2}
   m_sharedMaterial: {fileID: -5886620309761468120, guid: a2ac1a9c63f4e5a489193fb90df779d2, type: 2}
@@ -48307,7 +48306,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 029120ee065f17a48b5d44b4d34de85e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -51581,28 +51580,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1599318331}
     m_ColliderPaths:
-    - - X: 777187561
-        Y: 40000100
-      - X: 772812439
-        Y: 40000100
-      - X: 772812380
-        Y: 40000041
-      - X: 772812380
-        Y: -50000041
-      - X: 772812439
-        Y: -50000100
-      - X: 777187561
-        Y: -50000100
-      - X: 777187620
-        Y: -50000041
-      - X: 777187620
-        Y: 40000041
+    - - X: 777187520
+        Y: -50000000
+      - X: 777187520
+        Y: 40000000
+      - X: 772812480
+        Y: 40000000
+      - X: 772812480
+        Y: -50000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 77.71873, y: -5.00001}
-      - {x: 77.71873, y: 4.00001}
-      - {x: 77.281235, y: 3.9999747}
-      - {x: 77.28127, y: -5.00001}
+    - - {x: 77.71872, y: -5}
+      - {x: 77.71872, y: 4}
+      - {x: 77.28125, y: 3.999971}
+      - {x: 77.28128, y: -5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1599318330

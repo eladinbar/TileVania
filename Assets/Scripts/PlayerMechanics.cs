@@ -76,7 +76,7 @@ public class PlayerMechanics : MonoBehaviour {
     void OnFire(InputValue value) {
         if (isAlive) {
             audioSource.PlayOneShot(bowShotSFX);
-            Instantiate(projectile, bowTransform.position, transform.rotation);
+            Instantiate(projectile, bowTransform.position, this.transform.rotation);
             playerAnimator.SetTrigger(FireBow);
         }
     }
@@ -92,7 +92,7 @@ public class PlayerMechanics : MonoBehaviour {
     }
 
     void Climb() {
-        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) && Input.GetAxis("Vertical") != 0) {
+        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) && Input.GetAxis("Vertical") != 0 && playerRigidbody.velocity.y <= climbSpeed) {
             isAttachedToLadder = true;
             
             Vector2 climbVelocity = new Vector2(playerRigidbody.velocity.x / 2f, moveInput.y * climbSpeed);

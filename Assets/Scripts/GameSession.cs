@@ -13,6 +13,7 @@ public class GameSession : MonoBehaviour {
     
     
     void Awake() {
+        Cursor.visible = false;
         int gameSessionCount = FindObjectsOfType<GameSession>().Length;
         if(gameSessionCount > 1)
             Destroy(this.gameObject);
