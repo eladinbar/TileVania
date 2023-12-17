@@ -11,6 +11,7 @@ public class CoinPickup : MonoBehaviour {
             wasCollected = true;
             FindObjectOfType<GameSession>().IncreaseScore(pointsPerPickup);
             other.GetComponent<AudioSource>().PlayOneShot(coinPickupSFX);
+            CoinCounter.instance.CollectCoin();
             Destroy(this.gameObject);
         }
     }
