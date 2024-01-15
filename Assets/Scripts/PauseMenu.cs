@@ -15,14 +15,18 @@ public class PauseMenu : MonoBehaviour {
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
+        #if !UNITY_ANDROID
         Cursor.visible = false;
+        #endif
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
 
     void Pause() {
         pauseMenuUI.SetActive(true);
+        #if !UNITY_ANDROID
         Cursor.visible = true;
+        #endif
         Time.timeScale = 0f;
         gameIsPaused = true;
     }
