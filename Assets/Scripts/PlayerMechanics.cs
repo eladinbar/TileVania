@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMechanics : MonoBehaviour {
+    // Player Instance
+    public static PlayerMechanics Instance { get; private set; }
+    
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsClimbing = Animator.StringToHash("isClimbing");
     private static readonly int IsClimbingIdling = Animator.StringToHash("isClimbingIdling");
@@ -36,6 +39,10 @@ public class PlayerMechanics : MonoBehaviour {
     float originalGravity;
     bool isAlive = true;
     bool isAttachedToLadder = false;
+
+    void Awake() {
+        Instance = this;
+    }
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
@@ -92,7 +99,7 @@ public class PlayerMechanics : MonoBehaviour {
     }
 
     void Climb() {
-        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) && Input.GetAxis("Vertical") != 0 && playerRigidbody.velocity.y <= climbSpeed) {
+        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) && moveInput.y != 0 && playerRigidbody.velocity.y <= climbSpeed) {
             isAttachedToLadder = true;
             
             Vector2 climbVelocity = new Vector2(playerRigidbody.velocity.x / 2f, moveInput.y * climbSpeed);
@@ -101,6 +108,9 @@ public class PlayerMechanics : MonoBehaviour {
             AdjustGravity(true, false);
             AdjustClimbingState(true, Mathf.Abs(climbVelocity.y) > Mathf.Epsilon);
         } else if (isAttachedToLadder && feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) {
+            // Transition to idle climbing state
+            Vector2 climbVelocity = new Vector2(playerRigidbody.velocity.x / 2f, 0);
+            playerRigidbody.velocity = climbVelocity;
             AdjustGravity(true, false);
             AdjustClimbingState(true, false);
         } else {
